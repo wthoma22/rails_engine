@@ -1,7 +1,7 @@
 require 'csv'
 
 namespace :rails_engine do
-  desc "TODO"
+  desc "Creates corresponding objects from the CSV sales data"
   task seed: :environment do
     data = {
       customers: "./db/sales_data/customers.csv",
