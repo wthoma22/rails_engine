@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "customers API" do
-  context "fing by" do
+  context "find by" do
     let!(:customer_1) { create(:customer) }
 
     it "finds customer by id" do
@@ -10,25 +10,25 @@ describe "customers API" do
       get '/api/v1/customers/find', params: { id: id }
       customer = JSON.parse(response.body)
 
-      expect(response.to be_success)
+      expect(response).to be_success
       expect(customer['id']).to eq(id)
     end
 
     it "finds customer by first name" do
-      first_name = cusomer_1.first_name
+      first_name = customer_1.first_name
 
       get '/api/v1/customers/find', params: { first_name: first_name }
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(custome['first_name']).to eq(first_name)
+      expect(customer['first_name']).to eq(first_name)
     end
 
     it 'finds customer by last name' do
       last_name = customer_1.last_name
 
       get '/api/v1/customers/find', params: { last_name: last_name }
-      customer = JSON.parst(response.body)
+      customer = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(customer['last_name']).to eq(last_name)
