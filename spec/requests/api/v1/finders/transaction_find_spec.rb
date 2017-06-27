@@ -51,7 +51,7 @@ describe "Transaction API" do
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(transaction['created_at']).to eq(created_at)
+      expect(transaction['created_at']).to eq("2014-03-27T14:54:02.000Z")
     end
 
     it 'finds transaction from updated date' do
@@ -61,7 +61,7 @@ describe "Transaction API" do
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(transaction['updated_at']).to eq(updated_at)
+      expect(transaction['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
   end
 end
