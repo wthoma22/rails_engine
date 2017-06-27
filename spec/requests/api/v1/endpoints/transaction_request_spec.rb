@@ -23,4 +23,25 @@ describe "Transaction API" do
       expect(transaction["invoice_id"]).to be_a String
     end
   end
+
+  context "GET /api/v1/transactins/:id" do
+    it "can get one transaction by id" do
+      id = create(:transaction).id
+
+      get "/api/v1/transactions/#{id}"
+
+      transactions = JSON.parse(response.body)
+      transaction = transactions.first
+
+      expect(response).to have_http_status(200)
+      expect(transaction).to have_key("credit_card_number")
+      expect(transaction["credit_card_number"]).to be_a String
+      expect(transaction).to have_key("credit_card_expiration_date")
+      expect(transaction["credit_card_expiration_date"]).to be_a String
+      expect(transaction).to have_key("result")
+      expect(transaction["result"]).to be_a String
+      expect(transaction).to have_key("invoice_id")
+      expect(transaction["invoice_id"]).to be_a String
+    end
+  end
 end

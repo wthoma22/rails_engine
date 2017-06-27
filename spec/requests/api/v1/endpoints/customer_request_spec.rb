@@ -15,6 +15,8 @@ describe "Customers API" do
       expect(customers.count).to eq(3)
       expect(customer).to have_key("first_name")
       expect(customer["first_name"]).to be_a String
+      expect(customer).to have_key("last_name")
+      expect(customer["last_name"]).to be_a String
     end
   end
 
