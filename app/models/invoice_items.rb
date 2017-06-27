@@ -1,4 +1,4 @@
-class InvoicesItem < ApplicationController
+class InvoiceItems < ApplicationController
   validates :quantity, :unit_price, :item_id, :invoice_id, presence: true
 
   belongs_to :invoice
