@@ -24,16 +24,6 @@ describe "invoices API" do
       expect(invoice['customer_id']).to eq(customer_id)
     end
 
-    it 'finds invoice by customer_id' do
-      customer_id = invoice_1.customer_id
-
-      get '/api/v1/invoices/find', params: { customer_id: customer_id }
-      invoice = JSON.parse(response.body)
-
-      expect(response).to be_success
-      expect(invoice['customer_id']).to eq(customer_id)
-    end
-
     it 'finds invoice by merchant_id' do
       merchant_id = invoice_1.merchant_id
 

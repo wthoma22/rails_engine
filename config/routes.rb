@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       namespace :items do
+        get '/find', to: 'find#show'
         get '/:id/best_day', to: 'best_day#show'
         get '/most_items', to: 'most_items#index'
         get '/most_revenue', to: 'most_revenue#index'
@@ -25,6 +26,10 @@ Rails.application.routes.draw do
       end
 
       namespace :invoices do
+        get '/find', to: 'find#show'
+      end
+
+      namespace :invoice_items do
         get '/find', to: 'find#show'
       end
 
