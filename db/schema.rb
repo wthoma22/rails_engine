@@ -73,4 +73,5 @@ ActiveRecord::Schema.define(version: 20170627171045) do
   add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
   add_foreign_key "transactions", "invoices"
+
 end
