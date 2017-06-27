@@ -4,7 +4,6 @@ class Api::V1::Customers::FindController < ApplicationController
   end
 
   def show
-    # binding.pry
     render json: Customer.find_by(customer_params)
   end
 
