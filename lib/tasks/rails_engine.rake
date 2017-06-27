@@ -15,20 +15,20 @@ namespace :rails_engine do
     CSV.foreach(data[:customers],{:headers=>:first_row}) do |row|
         binding.pry
     end
+
     CSV.foreach(data[:merchants],{:headers=>:first_row}) do |row|
-        binding.pry
     end
+
     CSV.foreach(data[:items],{:headers=>:first_row}) do |row|
-        binding.pry
     end
+
     CSV.foreach(data[:invoices],{:headers=>:first_row}) do |row|
-        binding.pry
     end
+
     CSV.foreach(data[:invoice_items],{:headers=>:first_row}) do |row|
-        binding.pry
     end
+
     CSV.foreach(data[:transactions],{:headers=>:first_row}) do |row|
-        binding.pry
     end
   end
 end
