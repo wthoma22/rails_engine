@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :merchant do
-    name "MyString"
+    name "Fern Gully"
   end
 end
