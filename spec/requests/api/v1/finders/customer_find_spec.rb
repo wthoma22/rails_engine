@@ -38,7 +38,6 @@ describe "customers API" do
       created_at = customer_1.created_at
 
       get '/api/v1/customers/find', params: { created_at: created_at }
-      binding.pry
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
