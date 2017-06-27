@@ -17,4 +17,20 @@ describe "Customers API" do
       expect(customer["first_name"]).to be_a String
     end
   end
+
+  context "GET /api/v1/customer/:id" do
+    it "Can get one customer by id" do
+      id = create(:customer).id
+
+      get "/api/v1/customers/#{id}"
+
+      customer = JSON.parse(response.body)
+
+      expect(response).to have_http_status(200)
+      expect(customer).to have_key("first_name")
+      expect(customer["first_name"]).to be_a String
+      expect(customer).to have_key("last_name")
+      expect(customer["last_name"]).to be_a String
+    end
+  end
 end
