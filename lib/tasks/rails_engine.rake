@@ -42,7 +42,7 @@ namespace :rails_engine do
     end
 
     CSV.foreach(data[:invoice_items],{:headers=>:first_row}) do |row|
-      InvoiceItems.create!(quantity: row["quantity"],
+      InvoiceItem.create!(quantity: row["quantity"],
                             unit_price: row["unit_price"].to_i,
                             item_id: row["item_id"].to_i,
                             invoice_id: row["invoice_id"].to_i

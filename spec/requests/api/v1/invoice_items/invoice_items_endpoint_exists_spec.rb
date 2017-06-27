@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Items API" do
   it "sends a list of items" do
-    create_list(:invoice_items, 5)
+    create_list(:invoice_item, 5)
 
     get '/api/v1/invoice_items'
 
@@ -16,6 +16,6 @@ describe "Items API" do
     expect(first_item).to have_key("quantity")
     expect(first_item).to have_key("unit_price")
     expect(first_item).to have_key("invoice_id")
-    expect(first_item).to have_key("item_id")
+    expect(first_item["item"]).to have_key("id")
   end
 end

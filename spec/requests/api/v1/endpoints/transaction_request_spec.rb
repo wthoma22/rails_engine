@@ -14,13 +14,12 @@ describe "Transaction API" do
 
       expect(transactions.count).to eq(3)
       expect(transaction).to have_key("credit_card_number")
-      expect(transaction["credit_card_number"]).to be_a String
+      expect(transaction["credit_card_number"]).to be_a Integer
       expect(transaction).to have_key("credit_card_expiration_date")
-      expect(transaction["credit_card_expiration_date"]).to be_a String
       expect(transaction).to have_key("result")
       expect(transaction["result"]).to be_a String
       expect(transaction).to have_key("invoice_id")
-      expect(transaction["invoice_id"]).to be_a String
+      expect(transaction["invoice_id"]).to be_a Integer
     end
   end
 
@@ -30,18 +29,17 @@ describe "Transaction API" do
 
       get "/api/v1/transactions/#{id}"
 
-      transactions = JSON.parse(response.body)
-      transaction = transactions.first
+      transaction = JSON.parse(response.body)
 
       expect(response).to have_http_status(200)
       expect(transaction).to have_key("credit_card_number")
-      expect(transaction["credit_card_number"]).to be_a String
+      expect(transaction["credit_card_number"]).to be_a Integer
       expect(transaction).to have_key("credit_card_expiration_date")
-      expect(transaction["credit_card_expiration_date"]).to be_a String
+      expect(transaction["credit_card_expiration_date"]).to be_a Integer
       expect(transaction).to have_key("result")
       expect(transaction["result"]).to be_a String
       expect(transaction).to have_key("invoice_id")
-      expect(transaction["invoice_id"]).to be_a String
+      expect(transaction["invoice_id"]).to be_a Integer
     end
   end
 end
