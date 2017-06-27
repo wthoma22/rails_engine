@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20170627171045) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.text "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "invoice_items", force: :cascade do |t|
     t.integer "quantity"
     t.integer "unit_price"
@@ -72,5 +78,5 @@ ActiveRecord::Schema.define(version: 20170627171045) do
   add_foreign_key "invoices", "customers"
   add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
-  add_foreign_key "transactions", "invoices"
+
 end
