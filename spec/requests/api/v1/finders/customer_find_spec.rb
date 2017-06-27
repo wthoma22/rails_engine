@@ -37,11 +37,11 @@ describe "customers API" do
     it "finds customer from creation date" do
       created_at = customer_1.created_at
 
-      get 'api/v1/customers/find', params: { created_at: created_at }
+      get '/api/v1/customers/find', params: { created_at: created_at }
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer['created_at']).to eq(created_at)
+      expect(customer['created_at']).to eq("2014-03-27T14:54:02.000Z")
     end
 
     it 'finds customer from updated date' do
@@ -51,7 +51,7 @@ describe "customers API" do
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer['updated_at']).to eq(updated_at)
+      expect(customer['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
   end
 end
