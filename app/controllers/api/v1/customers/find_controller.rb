@@ -10,6 +10,9 @@ class Api::V1::Customers::FindController < ApplicationController
 private
 
   def customer_params
-    params.permit(:id, :first_name, :last_name, :created_at, :updated_at)
+    date_search = {}
+    date_search[:created_at] = params[:created_at].to_datetime if params[:created_at]
+    date_search[:updated_at] = params[:updated_at].to_datetime if params[:updated_at]
+    params.permit(:id, :first_name, :last_name).merge(date_search)
   end
 end

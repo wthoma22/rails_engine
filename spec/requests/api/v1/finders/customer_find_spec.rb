@@ -37,7 +37,7 @@ describe "customers API" do
     it "finds customer from creation date" do
       created_at = customer_1.created_at
 
-      get 'api/v1/customers/find', params: { created_at: created_at }
+      get '/api/v1/customers/find', params: { created_at: created_at }
       customer = JSON.parse(response.body)
 
       expect(response).to be_success

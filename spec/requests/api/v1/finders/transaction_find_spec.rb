@@ -45,9 +45,9 @@ describe "Transaction API" do
     end
 
     it "finds transaction from creation date" do
-      created_at = transaction_1.created_at
+      created_at = transaction.created_at
 
-      get 'api/v1/transactions/find', params: { created_at: created_at }
+      get '/api/v1/transactions/find', params: { created_at: created_at }
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
@@ -55,7 +55,7 @@ describe "Transaction API" do
     end
 
     it 'finds transaction from updated date' do
-      updated_at = transaction_1.updated_at
+      updated_at = transaction.updated_at
 
       get '/api/v1/transactions/find', params: { updated_at: updated_at }
       transaction = JSON.parse(response.body)
