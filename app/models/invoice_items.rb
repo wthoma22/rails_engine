@@ -1,4 +1,4 @@
-class InvoicesItem < ApplicationController
+class InvoiceItems < ApplicationRecord
 
   belongs_to :invoice
   belongs_to :item
