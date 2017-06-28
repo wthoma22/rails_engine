@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'GET /api/v1/merchants/:id/favorite_customer' do
   context 'get customers favorite merchant' do
-    it "returns the merchant who has the most transactions with that customer" do
+    it "returns a merchant where the customer has most successful transactions" do
       customer = create(:customer)
       merchant_1 = create(:merchant)
       merchant_2 = create(:merchant)
