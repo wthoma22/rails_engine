@@ -5,13 +5,23 @@ class Merchant < ApplicationRecord
   has_many :invoices
 
 
-  def self.most_x_revenue(number)
+  def self.most_revenue(quantity)
     joins(:invoices)
     .joins(invoices: [:transactions])
     .merge(Transaction.successful)
     .joins(invoices: [:invoice_items])
     .group(:id)
     .order('SUM(invoice_items.unit_price * invoice_items.quantity) DESC')
-    .limit(number)
+    .limit(quantity)
+  end
+
+  def self.most_items(quantity)
+    joins(:invoices)
+    .joins(invoices: [:transactions])
+    .merge(Transaction.successful)
+    .joins(invoices: [:invoice_items])
+    .group(:id)
+    .order('SUM(invoice_items.quantity) DESC')
+    .limit(quantity)
   end
 end
