@@ -14,13 +14,17 @@ namespace :rails_engine do
 
     CSV.foreach(data[:customers],{:headers=>:first_row}) do |row|
         Customer.create!(first_name: row["first_name"],
-                          last_name: row["last_name"]
+                          last_name: row["last_name"],
+                          created_at: row["created_at"],
+                          updated_at: row["updated_at"]
                         )
         puts "Creating customer: #{row["first_name"]}"
     end
 
     CSV.foreach(data[:merchants],{:headers=>:first_row}) do |row|
-        Merchant.create!(name: row["name"])
+        Merchant.create!(name: row["name"],
+        created_at: row["created_at"],
+        updated_at: row["updated_at"])
         puts "Creating Merchant: #{row["name"]}"
     end
 
@@ -28,7 +32,9 @@ namespace :rails_engine do
       Item.create!(name: row["name"],
                     description: row["description"],
                     unit_price: row["unit_price"].to_i,
-                    merchant_id: row["merchant_id"].to_i
+                    merchant_id: row["merchant_id"].to_i,
+                    created_at: row["created_at"],
+                    updated_at: row["updated_at"]
                   )
       puts "Creating Item: #{row["name"]}"
     end
@@ -36,8 +42,9 @@ namespace :rails_engine do
     CSV.foreach(data[:invoices],{:headers=>:first_row}) do |row|
       Invoice.create!(customer_id: row["customer_id"].to_i,
                       status: row["status"],
-                      merchant_id: row["merchant_id"].to_i
-                      )
+                      merchant_id: row["merchant_id"].to_i,
+                      created_at: row["created_at"],
+                      updated_at: row["updated_at"])
       puts "Creating Invoice for Customer #{row["customer_id"]}"
     end
 
@@ -45,7 +52,9 @@ namespace :rails_engine do
       InvoiceItem.create!(quantity: row["quantity"],
                             unit_price: row["unit_price"].to_i,
                             item_id: row["item_id"].to_i,
-                            invoice_id: row["invoice_id"].to_i
+                            invoice_id: row["invoice_id"].to_i,
+                            created_at: row["created_at"],
+                            updated_at: row["updated_at"]
                           )
       puts "Creating InvoiceItems for Item: #{row["item_id"]}"
     end
@@ -54,7 +63,9 @@ namespace :rails_engine do
       Transaction.create!(credit_card_number: row["credit_card_number"],
                           credit_card_expiration_date: row["credit_card_expiration_date"],
                           result: row["result"],
-                          invoice_id: row["invoice_id"]
+                          invoice_id: row["invoice_id"],
+                          created_at: row["created_at"],
+                          updated_at: row["updated_at"]
                           )
       puts "Creating Transaction for Invoice: #{row["invoice_id"]}"
     end
