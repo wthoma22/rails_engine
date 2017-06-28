@@ -1,6 +1,6 @@
 class Api::V1::Customers::FindController < ApplicationController
   def index
-    render json: Customer.all
+    render json: Customer.where(customer_params)
   end
 
   def show

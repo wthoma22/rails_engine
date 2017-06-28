@@ -72,5 +72,16 @@ describe "invoice_items API" do
       expect(response).to be_success
       expect(invoice_items['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
+
+    it 'find all invoice items by attribute' do
+      id = (invoice_items_1).id
+
+      get '/api/v1/invoice_items/find_all', params: { id: id }
+      invoice_items = JSON.parse(response.body)
+
+      expect(response).to be_success
+      
+      expect(invoice_items.count).to eq(1)
+    end
   end
 end
