@@ -23,10 +23,10 @@ Rails.application.routes.draw do
       end
 
       namespace :customers do
-        get '/:id/favorite_merchant', to: 'favorite_merchant#show'
         get '/find', to: 'find#show'
         get '/find_all', to: 'find#index'
         get '/random', to: 'random#show'
+        get ':id/favorite_merchant', to: 'favorite_merchant#show'
       end
 
       namespace :transactions do
