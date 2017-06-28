@@ -80,8 +80,17 @@ describe "invoice_items API" do
       invoice_items = JSON.parse(response.body)
 
       expect(response).to be_success
-      
+
       expect(invoice_items.count).to eq(1)
+    end
+
+    it 'random invoice_items' do
+      create_list(:invoice_item, 10)
+
+      get '/api/v1/invoice_items/random'
+      invoice_items = JSON.parse(response.body)
+
+      expect(response).to be_success
     end
   end
 end

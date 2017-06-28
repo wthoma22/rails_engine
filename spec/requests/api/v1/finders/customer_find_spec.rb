@@ -53,5 +53,14 @@ describe "customers API" do
       expect(response).to be_success
       expect(customer['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
+
+    it 'random customer' do
+      create_list(:customer, 10)
+
+      get '/api/v1/customers/random'
+      invoice_items = JSON.parse(response.body)
+
+      expect(response).to be_success
+    end
   end
 end

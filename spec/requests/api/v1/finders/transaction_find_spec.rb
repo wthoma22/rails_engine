@@ -63,5 +63,14 @@ describe "Transaction API" do
       expect(response).to be_success
       expect(transaction['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
+
+    it 'random item' do
+      create_list(:transaction, 10)
+
+      get '/api/v1/transactions/random'
+      invoice_items = JSON.parse(response.body)
+
+      expect(response).to be_success
+    end
   end
 end

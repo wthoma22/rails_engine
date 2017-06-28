@@ -63,5 +63,14 @@ describe "invoices API" do
       expect(response).to be_success
       expect(invoice['updated_at']).to eq("2014-03-27T14:54:02.000Z")
     end
+    
+    it 'random invoice' do
+      create_list(:invoice, 10)
+
+      get '/api/v1/invoices/random'
+      invoice_items = JSON.parse(response.body)
+
+      expect(response).to be_success
+    end
   end
 end
