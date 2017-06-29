@@ -20,8 +20,17 @@ class Invoice < ApplicationRecord
   end
 
  def self.revenue(date)
-   joins(:invoice_items)
-   .where("invoices.created_at = ? ", date)
-   .sum("invoice_items.unit_price * invoice_items.quantity")
+   if date == nil
+     joins(:invoice_items)
+     .sum("invoice_items.unit_price * invoice_items.quantity")
+   else
+     joins(:invoice_items)
+     .where("invoices.created_at = ? ", date)
+     .sum("invoice_items.unit_price * invoice_items.quantity")
+   end
+  end
+
+  def self.single_revenue(merchant_id)
+
   end
 end

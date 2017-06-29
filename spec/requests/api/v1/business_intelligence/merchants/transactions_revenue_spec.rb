@@ -12,8 +12,7 @@ describe 'GET /api/v1/merchants/:id/revenue' do
         get "/api/v1/merchants/#{merchant.id}/revenue"
 
         revenue = JSON.parse(response.body)
-
-        expect(revenue["total_revenue"]).to eq(5000)
+        expect(revenue).to eq(5000)
       end
     end
   end
