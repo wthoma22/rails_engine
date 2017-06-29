@@ -2,7 +2,7 @@
 
 This project was designed to mimic a sales data API, where you can query merchants, customers, invoices, transactions, items, and their associations.
 
-To interact with the API:
+### To interact with the API:
 
 1. Clone down the [test harness](https://github.com/turingschool/rales_engine_spec_harness)
 2. Clone down this repository.
