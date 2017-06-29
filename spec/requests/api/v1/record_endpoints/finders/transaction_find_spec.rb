@@ -31,7 +31,7 @@ describe "Transaction API" do
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(transaction['credit_card_number']).to eq(credit_card_number)
+      expect(transaction['credit_card_number']).to eq("1")
     end
 
     it 'finds transaction by result' do
@@ -46,22 +46,24 @@ describe "Transaction API" do
 
     it "finds transaction from creation date" do
       created_at = transaction.created_at
+      id = transaction.id
 
       get '/api/v1/transactions/find', params: { created_at: created_at }
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(transaction['created_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(transaction['id']).to eq(id)
     end
 
     it 'finds transaction from updated date' do
       updated_at = transaction.updated_at
+      id = transaction.id
 
       get '/api/v1/transactions/find', params: { updated_at: updated_at }
       transaction = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(transaction['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(transaction['id']).to eq(id)
     end
 
     it 'random item' do
