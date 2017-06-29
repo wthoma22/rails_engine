@@ -7,7 +7,7 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   private
 
   def datetime
-    params[:date].to_datetime
+    params[:date].to_datetime if params[:date]
   end
 
 end

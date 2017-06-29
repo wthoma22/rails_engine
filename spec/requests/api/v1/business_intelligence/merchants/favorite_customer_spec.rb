@@ -17,7 +17,7 @@ describe "GET /api/v1/merchants/:id/favorite_customer" do
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer).to be_instance_of(Hash)
+      expect(customer).to be_a Hash
       expect(customer["id"]).to eq(customer_1.id)
     end
   end
