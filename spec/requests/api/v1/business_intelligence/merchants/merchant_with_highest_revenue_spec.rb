@@ -71,12 +71,13 @@ describe "GET /api/v1/merchants/most_revenue?quantity=x" do
                                 invoice_id: invoice_1.id,
                                 quantity: 1000,
                                 unit_price: 1000)
+
       get "/api/v1/merchants/revenue?date=#{date}"
 
       revenue = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(revenue).to eq(1000015)
+      expect(revenue).to eq({"total_revenue"=>"10000.15"})
     end
   end
 end

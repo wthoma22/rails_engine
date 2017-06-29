@@ -17,7 +17,7 @@ describe " GET /api/v1/merchants/:id/revenue?date=x" do
       revenue = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(revenue).to eq(5000)
+      expect(revenue).to eq({"revenue"=>"50.0"})
     end
   end
 end
