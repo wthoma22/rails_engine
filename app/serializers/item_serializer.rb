@@ -1,7 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :unit_price, :merchant_id, :updated_at, :created_at
+  attributes :description, :id, :merchant_id, :name, :unit_price
 
-  belongs_to :merchant
-  has_many :invoice_items
-  # has_many :invoice, through: :invoice_items
+  def unit_price
+    (object.unit_price.to_f/100).to_s
+  end
 end
