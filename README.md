@@ -1,24 +1,15 @@
-# README
+# Rails Engine - An Internal API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was designed to mimic a sales data API, where you can query merchants, customers, invoices, transactions, and their associations.
 
-Things you may want to cover:
+To interact with the API:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone down the [test harness](https://github.com/turingschool/rales_engine_spec_harness)
+2. Clone down this repository.
+3. Navigate into rails_engine.
+4. Run ```Bundle```
+5. Create the database with ```rake db:setup```
+6. Seed the database with ```rake rails_engine:seed```
+7. Start a local Rails Server with ```rails s```
+8. In a seperate instance of Terminal, navigate into the test harness and run ```Bundle```
+9. Run ```rake``` to run the suite. 
