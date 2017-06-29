@@ -6,15 +6,20 @@ class Item < ApplicationRecord
   has_many :invoices, :through => :invoice_items
 
   def self.top_x_sold(number)
-    select("items.*, sum(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
+    unscoped
     .joins(:invoice_items)
-    .group("items.id")
-    .order("total_revenue DESC").limit(number)
+    .group(:id)
+    .order("sum(invoice_items.quantity) DESC")
+    .limit(number)
   end
 
   def best_day
-    { "best_day" => invoices.joins(:invoice_items)
-    .order("invoice_items.quantity DESC, invoices.created_at DESC")
-    .first.created_at}
+      { "best_day" => invoices
+      .joins(:invoice_items)
+      .group(:id)
+      .group(:created_at)
+      .order("sum(invoice_items.quantity) DESC")
+      .first
+      .created_at }
   end
 end
