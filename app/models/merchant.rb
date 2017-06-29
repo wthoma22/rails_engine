@@ -3,7 +3,8 @@ class Merchant < ApplicationRecord
 
   has_many :items
   has_many :invoices
-
+  has_many :invoice_items, through: :invoices
+  has_many :transactions, through: :invoices
 
   def self.most_revenue(quantity)
     joins(:invoices)
@@ -24,6 +25,4 @@ class Merchant < ApplicationRecord
     .order('SUM(invoice_items.quantity) DESC')
     .limit(quantity)
   end
-
-
 end
