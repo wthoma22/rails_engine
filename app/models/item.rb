@@ -11,4 +11,10 @@ class Item < ApplicationRecord
     .group("items.id")
     .order("total_revenue DESC").limit(number)
   end
+
+  def best_day
+    { "best_day" => invoices.joins(:invoice_items)
+    .order("invoice_items.quantity DESC, invoices.created_at DESC")
+    .first.created_at}
+  end
 end

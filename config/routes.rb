@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         get '/:id/best_day', to: 'best_day#show'
         get '/most_items', to: 'most_items#index'
         get '/most_revenue', to: 'most_revenue#index'
+        get '/most_items', to: 'most_items#index'
+        get ':id/best_day', to: 'best_day#show'
       end
 
       namespace :merchants do
