@@ -1,6 +1,6 @@
 # Rails Engine - An Internal API
 
-This project was designed to mimic a sales data API, where you can query merchants, customers, invoices, transactions, and their associations.
+This project was designed to mimic a sales data API, where you can query merchants, customers, invoices, transactions, items, and their associations.
 
 To interact with the API:
 
