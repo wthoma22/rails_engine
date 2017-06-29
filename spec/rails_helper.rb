@@ -10,6 +10,13 @@ require 'capybara/rails'
 # Require shoulda-matchers and config it with Rails and RSpec
 require 'shoulda-matchers'
 require 'support/factory_girl'
+require 'simplecov'
+SimpleCov.start
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  puts "required simplecov"
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
