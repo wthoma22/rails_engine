@@ -50,7 +50,6 @@ describe "GET /api/v1/merchants/most_revenue?quantity=x" do
       merchants = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(merchants).to be_a Array
       expect(merchants.length).to eq(2)
       expect(merchants.first["id"]).to eq(merchant)
       expect(merchants.last["id"]).to eq(merchant2)
@@ -77,9 +76,7 @@ describe "GET /api/v1/merchants/most_revenue?quantity=x" do
       revenue = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(revenue).to be_a Array
-      expect(revenue.length).to eq(1)
-      expect(revenue[0]["total_revenue"]).to eq(1000015)
+      expect(revenue).to eq(1000015)
     end
   end
 end

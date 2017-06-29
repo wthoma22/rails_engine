@@ -8,6 +8,7 @@ class Merchant < ApplicationRecord
   has_many :transactions, through: :invoices
 
   def self.most_revenue(quantity)
+    #join lines 13 and 15, remove first line
     joins(:invoices)
     .joins(invoices: [:transactions])
     .merge(Transaction.successful)

@@ -22,6 +22,6 @@ class Invoice < ApplicationRecord
  def self.revenue(date)
    joins(:invoice_items)
    .where("invoices.created_at = ? ", date)
-   .select('SUM(invoice_items.unit_price * invoice_items.quantity) AS total_revenue')
+   .sum("invoice_items.unit_price * invoice_items.quantity")
   end
 end
