@@ -17,9 +17,9 @@ describe "GET /api/v1/items/:id/best_day" do
                                         quantity: 1,
                                         unit_price: 5)
 
-      get "api/v1/items/#{item.id}/best_day"
-      date = JSON.parse(respone.body)
-      expected_date = invoice_most.created_at.to_i
+      get "/api/v1/items/#{item.id}/best_day"
+      date = JSON.parse(response.body)
+      expected_date = invoice_most_sales.created_at.to_i
       actual_date = DateTime.parse(date["best_day"]).to_i
 
       expect(response).to be_success
