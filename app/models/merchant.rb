@@ -24,4 +24,6 @@ class Merchant < ApplicationRecord
     .order('SUM(invoice_items.quantity) DESC')
     .limit(quantity)
   end
+
+
 end
