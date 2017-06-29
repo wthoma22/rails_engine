@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, :through => :invoice_items
 
+  default_scope {order(:id)}
+
   def self.top_x_sold(number)
     unscoped
     .joins(:invoice_items)
