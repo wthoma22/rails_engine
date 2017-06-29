@@ -11,7 +11,9 @@ class Api::V1::InvoiceItems::FindController < ApplicationController
 private
 
   def invoice_item_params
+
     # date_search = {}
+    params[:unit_price] = params[:unit_price].to_f * 100.to_i if params[:unit_price]
     # date_search[:created_at] = params[:created_at].to_datetime if params[:created_at]
     # date_search[:updated_at] = params[:updated_at].to_datetime if params[:updated_at]
     params.permit(:id, :quantity, :unit_price, :item_id, :invoice_id, :created_at, :updated_at)
