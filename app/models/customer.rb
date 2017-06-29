@@ -4,6 +4,10 @@ class Customer < ApplicationRecord
   has_many :invoices
   has_many :merchants, through: :invoices
 
+  has_many :transactions, through: :invoices
+  has_many :merchants, through: :invoices
+
+
   def favorite_merchant
     merchants
     .select("merchants.*, count(invoices.merchant_id) as invoice_count")
@@ -11,4 +15,5 @@ class Customer < ApplicationRecord
     .where(transactions: {:result => 'success'})
     .group(:id).order("invoice_count desc").first
   end
+
 end

@@ -2,8 +2,10 @@ class Invoice < ApplicationRecord
   validates :customer_id, :status, :merchant_id, presence: true
 
   has_many :transactions
+
   belongs_to :customer
   belongs_to :merchant
+
   has_many :invoice_items
   has_many :items, :through =>  :invoice_items
 
@@ -15,5 +17,11 @@ class Invoice < ApplicationRecord
       .order("total_revenue DESC")
       .limit(limit)
       # .where(transactions: { result: "success"})
+  end
+
+ def self.revenue(date)
+   joins(:invoice_items)
+   .where("invoices.created_at = ? ", date)
+   .select('SUM(invoice_items.unit_price * invoice_items.quantity) AS total_revenue')
   end
 end
