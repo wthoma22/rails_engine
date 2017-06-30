@@ -46,24 +46,27 @@ describe "invoices API" do
 
     it "finds invoice from creation date" do
       created_at = invoice_1.created_at
+      invoice_id = invoice_1.id
 
       get '/api/v1/invoices/find', params: { created_at: created_at }
       invoice = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(invoice['created_at']).to eq("2014-03-27T14:54:02.000Z")
+
+      expect(invoice["id"]).to eq(invoice_id)
     end
 
     it 'finds invoice from updated date' do
       updated_at = invoice_1.updated_at
+      invoice_id = invoice_1.id
 
       get '/api/v1/invoices/find', params: { updated_at: updated_at }
       invoice = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(invoice['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(invoice['id']).to eq(invoice_id)
     end
-    
+
     it 'random invoice' do
       create_list(:invoice, 10)
 

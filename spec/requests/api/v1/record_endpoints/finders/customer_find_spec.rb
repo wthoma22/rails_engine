@@ -41,7 +41,7 @@ describe "customers API" do
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer['created_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(customer['first_name']).to eq("Bob")
     end
 
     it 'finds customer from updated date' do
@@ -51,7 +51,7 @@ describe "customers API" do
       customer = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(customer['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(customer['first_name']).to eq("Bob")
     end
 
     it 'random customer' do

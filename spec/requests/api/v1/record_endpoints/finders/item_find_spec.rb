@@ -45,33 +45,35 @@ describe "items API" do
     end
 
     it "finds item by unit_price" do
-      unit_price = item_1.unit_price
+      unit_price = create(:item, unit_price: 35500)
 
-      get '/api/v1/items/find', params: { unit_price: unit_price }
+      get '/api/v1/items/find', params: { unit_price: 355 }
       item = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(item['unit_price']).to eq(75107)
+      expect(item['unit_price']).to eq("355.0")
     end
 
     it "finds item from creation date" do
       created_at = item_1.created_at
+      id= item_1.id
 
       get '/api/v1/items/find', params: { created_at: created_at }
       item = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(item['created_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(item['id']).to eq(id)
     end
 
     it 'finds item from updated date' do
       updated_at = item_1.updated_at
+      id = item_1.id
 
       get '/api/v1/items/find', params: { updated_at: updated_at }
       item = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(item['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(item['id']).to eq(id)
     end
 
     it 'random item' do

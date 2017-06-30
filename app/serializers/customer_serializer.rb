@@ -1,5 +1,4 @@
 class CustomerSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :created_at, :updated_at
+  attributes :first_name, :id, :last_name
 
-  has_many :invoices
 end

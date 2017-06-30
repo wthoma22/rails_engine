@@ -24,13 +24,14 @@ describe "invoice_items API" do
     end
 
     it 'finds invoice_items by unit_price' do
-      unit_price = invoice_items_1.unit_price
+      item = create(:item, unit_price: 33500)
+      invoice_item = create(:invoice_item, item_id: item.id, unit_price: item.unit_price)
 
-      get '/api/v1/invoice_items/find', params: { unit_price: unit_price }
+
+      get '/api/v1/invoice_items/find', params: { unit_price: 335 }
       invoice_items = JSON.parse(response.body)
-
       expect(response).to be_success
-      expect(invoice_items['unit_price']).to eq(unit_price)
+      expect(invoice_items['unit_price']).to eq("335.0")
     end
 
     it 'finds invoice_items by item_id' do
@@ -55,22 +56,24 @@ describe "invoice_items API" do
 
     it "finds invoice_items from creation date" do
       created_at = invoice_items_1.created_at
+      id = invoice_items_1.id
 
       get '/api/v1/invoice_items/find', params: { created_at: created_at }
       invoice_items = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(invoice_items['created_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(invoice_items['id']).to eq(id)
     end
 
     it 'finds invoice_items from updated date' do
       updated_at = invoice_items_1.updated_at
+      id = invoice_items_1.id
 
       get '/api/v1/invoice_items/find', params: { updated_at: updated_at }
       invoice_items = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(invoice_items['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(invoice_items['id']).to eq(id)
     end
 
     it 'find all invoice items by attribute' do

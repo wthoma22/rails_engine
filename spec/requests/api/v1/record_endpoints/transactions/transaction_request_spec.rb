@@ -14,8 +14,7 @@ describe "Transaction API" do
 
       expect(transactions.count).to eq(3)
       expect(transaction).to have_key("credit_card_number")
-      expect(transaction["credit_card_number"]).to be_a Integer
-      expect(transaction).to have_key("credit_card_expiration_date")
+      expect(transaction["credit_card_number"]).to be_a String
       expect(transaction).to have_key("result")
       expect(transaction["result"]).to be_a String
       expect(transaction).to have_key("invoice_id")
@@ -33,9 +32,7 @@ describe "Transaction API" do
 
       expect(response).to have_http_status(200)
       expect(transaction).to have_key("credit_card_number")
-      expect(transaction["credit_card_number"]).to be_a Integer
-      expect(transaction).to have_key("credit_card_expiration_date")
-      expect(transaction["credit_card_expiration_date"]).to be_a Integer
+      expect(transaction["credit_card_number"]).to be_a String
       expect(transaction).to have_key("result")
       expect(transaction["result"]).to be_a String
       expect(transaction).to have_key("invoice_id")

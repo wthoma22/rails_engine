@@ -1,17 +1,21 @@
 require 'rails_helper'
 
-describe "GET /api/v1/items/most_revenue" do
+describe "GET /api/v1/items/most_revenue?quantity" do
   context "Get item with most revenue" do
     it "returns the top x items ranked by total revenue generated" do
       item_1 = create(:item)
       item_2 = create(:item)
       invoice = create(:invoice)
-      invoice_item_1 = create(:invoice_items)
-      invoice_item_2 = create(:invoice_items,
+      invoice_item_1 = create(:invoice_item,
                                 item_id: item_1.id,
-                                invoice_id: invoice.idea,
-                                quantity: 10,
-                                unit_price: 1000)
+                                invoice_id: invoice.id,
+                                quantity: 5,
+                                unit_price: 10)
+      invoice_item_2 = create(:invoice_item,
+                                item_id: item_2.id,
+                                invoice_id: invoice.id,
+                                quantity: 1,
+                                unit_price: 15)
       create(:transaction, invoice_id: invoice.id, result: "success")
 
       get "/api/v1/items/most_revenue?quantity=2"

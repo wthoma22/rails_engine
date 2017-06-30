@@ -26,22 +26,24 @@ describe "Merchants API" do
 
     it "finds merchant from creation date" do
       created_at = merchant.created_at
+      id = merchant.id
 
       get '/api/v1/merchants/find', params: { created_at: created_at }
       merchant = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(merchant['created_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(merchant['id']).to eq(id)
     end
 
     it 'finds merchant from updated date' do
       updated_at = merchant.updated_at
+      id = merchant.id
 
       get '/api/v1/merchants/find', params: { updated_at: updated_at }
       merchant = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(merchant['updated_at']).to eq("2014-03-27T14:54:02.000Z")
+      expect(merchant['id']).to eq(id)
     end
 
     it 'random merchant' do

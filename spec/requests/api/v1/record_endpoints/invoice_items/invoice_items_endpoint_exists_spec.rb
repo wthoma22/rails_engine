@@ -16,6 +16,5 @@ describe "Items API" do
     expect(first_item).to have_key("quantity")
     expect(first_item).to have_key("unit_price")
     expect(first_item).to have_key("invoice_id")
-    expect(first_item["item"]).to have_key("id")
   end
 end
